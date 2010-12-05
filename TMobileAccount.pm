@@ -12,7 +12,7 @@ use constant {
    DEBUG_OUT_FMT => '/tmp/out_%s.html',
 };
 my @mytmo_fields = qw(user full_name first_name is_prepaid);
-my $mytmo_regex  = qr/Msisdn=(.*)&SubscriberName=(.*)&FirstName=(.*)&IsPrePaidSubscriber=(.*)&/;
+my $mytmo_regex  = qr/Msisdn=(.*)&SubscriberName=(.*)&FirstName=(.*)&IsPrePaidSubscriber=(.*?)&/;
 my %field_map = qw(
     acctBalance_lblPhoneNumber            phone_number
     acctBalance_lblRatePlanName           rate_plan_name
