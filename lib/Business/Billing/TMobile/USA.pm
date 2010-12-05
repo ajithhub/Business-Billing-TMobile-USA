@@ -1,4 +1,4 @@
-package TMobileAccount;
+package Business::Billing::TMobile::USA;
 
 use strict;
 use warnings;
@@ -144,22 +144,4 @@ sub write_debug_file {
     printf "Wrote Debug file %s\n", $file_name;
     return 1;
 }
-
-package main;
-my ($user, $password) = @ARGV;
-
-$user and $password
-    or die "Need a user and password";
-
-print YAML::Dump($user, $password);
-
-my $account =  TMobileAccount->new(debug =>1);
-
-my $data = $account->login(user => $user, password => $password)
-    or die "Problem logging in";
-
-$data->{is_prepaid} =~ /false/i
-    and die "Not a prepay account";
-
-my $prepay_info = $account->get_prepay_details();
 
