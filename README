@@ -1,0 +1,8 @@
+T-Mobile USA prepaid account tools
+===============================
+
+I started this project then later dicsoverd a similar module on CPAN.  I
+matched the namespce, and it is very similar, but otherwise independent of the
+UK version.
+
+http://search.cpan.org/~srshah/Business-Billing-TMobile-UK-0.16/
