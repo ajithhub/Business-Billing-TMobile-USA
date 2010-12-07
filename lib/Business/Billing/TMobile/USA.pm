@@ -62,7 +62,7 @@ sub new {
              require HTTP::Cookies;
              $cookie_jar = HTTP::Cookies->new(
                  ignore_discard => 1,
-                 autosave => 1,
+                 autosave       => 1,
              );
         }
         $self->{browser}->cookie_jar
