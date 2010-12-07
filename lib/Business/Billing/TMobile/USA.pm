@@ -193,12 +193,12 @@ sub get_prepay_details {
         and $self->write_debug_file(text => $result->content, name  => 'ACCOUNT_GET');
     $text .= $result->content;
 
-    my %account_info = _parse_refill_pages( content => $text);
+    my $account_info = _parse_refill_pages( content => $text);
 
     $self->{debug}
-        and printf "Got prepay data: \n%s\n", YAML::Dump(\%account_info);
+        and printf "Got prepay data: \n%s\n", YAML::Dump($account_info);
 
-    return \%account_info;
+    return $account_info;
 }
 
 sub _parse_refill_pages {
