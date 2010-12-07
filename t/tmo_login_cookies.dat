@@ -1,0 +1,7 @@
+#LWP-Cookies-1.0
+Set-Cookie3: MyTMOCookie="FirstDropDate=12%2f7%2f2010&SubscriberName=John+Smith&TodaysDate=12%2f7%2f2010"; path="/"; domain=.t-mobile.com; path_spec; expires="2038-01-01 08:00:00Z"; version=0
+Set-Cookie3: MyTMobile="Msisdn=8475551212&SubscriberName=John+Smith&FirstName=John&IsPrePaidSubscriber=True&IsNewRegistration=False"; path="/"; domain=.t-mobile.com; path_spec; discard; version=0
+Set-Cookie3: TMobileCommon="TeaId=6823576b-2194-4552-b188-720090faf960"; path="/"; domain=.t-mobile.com; path_spec; discard; version=0
+Set-Cookie3: tmocusttoken=609d92ea562ef12a65cf595702f0ab0f5231d2bd93e6a9814cc051df5c7af40ddf5815fbe564d747adfe4d5a8e3ced3e47526c6fd799edfb0935fa1e05326b0bce3f3a70fdf9484d1456afd97de735ff3858a2c4bb2640215cccc28a8a3674271a3f58c6d0b4574a97acd75b9426255fc436bc37de42fe1a08a999c709b63d4ccc6c9217839e1666df7e604b4f5f871fc18e24f975dc4d67fafb7fb9a8848f417cb3c0ee2695a250; path="/"; domain=.t-mobile.com; path_spec; discard; version=0
+Set-Cookie3: ugcToken=00E0ABAA345839A83C32FAC75CA53EAA646174653D323031302D31322D37267573657269643D38343732303832333032; path="/"; domain=.t-mobile.com; path_spec; discard; version=0
+Set-Cookie3: ASP.NET_SessionId=idm3yqf53oqukz45k04qaima; path="/"; domain=my.t-mobile.com; path_spec; discard; HttpOnly; version=0
