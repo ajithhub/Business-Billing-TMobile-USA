@@ -12,6 +12,7 @@ use constant {
    LOGIN_URL     => 'https://my.t-mobile.com/Login/MyTMobileLogin.aspx',
    ACCOUNT_URL   => 'https://my.t-mobile.com/account',
    REFILL_URL    => 'https://my.t-mobile.com/account/refilloverview.aspx',
+   REFILL_URL2    => 'https://my.t-mobile.com/PartnerServices.aspx?service=vesta_autorefill',
 
    DEBUG_OUT_FMT => '/tmp/out_%s.html',
 };
@@ -31,6 +32,22 @@ my %refill_field_map = qw(
     acctBalance_lblPrePaidBalancePlan     balance
     acctBalance_lblNextPlanChangeToRemove next_charge
     );
+
+my @patterns= (
+    {
+        pattern => qr/<div id="panelDefaultProgram".*<span id="AMNTtxt">.*?<span class="col2">.*?\$(\d+\.\d+)/s,
+        names => [qw(balance)]
+    },
+    {
+        pattern => qr/<div id="panelDefaultProgram".*<span id="MINtxt">.*?<span class="col2">.*?(\d+) minutes/s,
+        names => [qw(minutes)]
+    },
+    {
+        pattern => qr/<div id="panelDefaultProgram".*<span id="EXPtxt">.*?<span class="col2">\s*([\d\/]+)/s,
+        names => [qw(expiration)]
+    }
+);
+
 
 =head2 METHODS
 
@@ -186,6 +203,11 @@ sub get_prepay_details {
     $self->{debug}
         and $self->write_debug_file(text => $result->content, name  => 'REFILL_GET');
 
+    $result = $self->{browser}->get(REFILL_URL2);
+
+    $self->{debug}
+        and $self->write_debug_file(text => $result->content, name  => 'REFILL_GET2');
+
     my $text = $result->content;
 
     $result = $self->{browser}->get(ACCOUNT_URL);
@@ -219,6 +241,15 @@ sub _parse_refill_pages {
             $account_info{$key} = $1;
         }
     }
+
+
+    for my $parser (@patterns) {
+        if (my @matches = $p{content} =~ /$parser->{pattern}/s){
+    $DB::single=2;
+            @account_info{@{$parser->{names}}} = @matches;
+        }
+    }
+
 
     return \%account_info;
 }
